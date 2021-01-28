@@ -2,7 +2,7 @@ const express = require("express")
 const dateFormat = require("./helper/dateFormat")
 const session = require("express-session")
 const app = express()
-const port = 3000
+const port = process.env.PORT || 4000;
 const router = require("./routers/index-router")
 
 app.set('view engine', 'ejs')
