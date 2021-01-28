@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidates</title>
+  <%- include('styles/style'); %>
+</head>
+<body>
+  <h1>Candidate List</h1>
+<br>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Party</th>
+      <th>Location</th>
+      <th>Birth Date</th>
+      <th>Total Vote(s)</th>
+      <th>Action</th>
+    </tr>
+    <% data.forEach(el => { %>
+      <tr>
+        <th><%= el.name %></th>
+        <th><%= el.party %></th>
+        <th><%= el.location %></th>
+        <th><%= dateFormat(el.birth_date) %></th>
+        <th><%= el.Voters.length %></th>
+        <th>
+          <a href="/voters/<%= idVoter %>/candidates/vote/<%= el.id %>"><button>Vote Candidate</button></a>
+          <a href="/voters/<%= idVoter %>/candidates/unvote/<%= el.id %>"><button>Unvote Candidate</button></a>
+        </th>
+      </tr>
+    <% }); %>
+  </table>
+<br>
+  <a href="/voters/<%= idVoter %>"><button>See My Votes</button></a>
+</body>
+</html>
